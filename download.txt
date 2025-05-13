@@ -1,0 +1,3 @@
+ pip install openpyxl
+ pip install selenium 
+ pip install requests beautifulsoup4 pandas
