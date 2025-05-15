@@ -7,6 +7,10 @@ import os
 from dotenv import load_dotenv
 import numpy as np
 
+print("Current working dir:", os.getcwd())
+print("Files in current dir:", os.listdir())
+print("Files in 'data':", os.listdir("data"))
+
 load_dotenv()
 
 # Access the API key
