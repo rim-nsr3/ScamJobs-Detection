@@ -13,10 +13,10 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 
 # Load your trained models and vectorizer
-log_model = joblib.load("../data/logistic_model.pkl")
-rf_model = joblib.load("../data/random_forest.pkl")
-dt_model = joblib.load("../data/decision_tree.pkl")
-vectorizer = joblib.load("../data/tfidf_vectorizer.pkl")
+log_model = joblib.load("data/logistic_model.pkl")
+rf_model = joblib.load("data/random_forest.pkl")
+dt_model = joblib.load("data/decision_tree.pkl")
+vectorizer = joblib.load("data/tfidf_vectorizer.pkl")
 
 # Gemini API setup (make sure to install `google-generativeai`)
 genai.configure(api_key=st.secrets["API_KEY"])
