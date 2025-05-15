@@ -1,0 +1,10 @@
+streamlit
+scikit-learn
+pandas
+numpy
+scipy
+joblib
+google-generativeai
+python-dotenv
+beautifulsoup4
+selenium

@@ -13,13 +13,13 @@ load_dotenv()
 api_key = os.getenv("API_KEY")
 
 # Load your trained models and vectorizer
-log_model = joblib.load("logistic_model.pkl")
-rf_model = joblib.load("random_forest.pkl")
-dt_model = joblib.load("decision_tree.pkl")
-vectorizer = joblib.load("tfidf_vectorizer.pkl")
+log_model = joblib.load("../data/logistic_model.pkl")
+rf_model = joblib.load("../data/random_forest.pkl")
+dt_model = joblib.load("../data/decision_tree.pkl")
+vectorizer = joblib.load("../data/tfidf_vectorizer.pkl")
 
 # Gemini API setup (make sure to install `google-generativeai`)
-genai.configure(key=api_key)
+genai.configure(api_key=st.secrets["API_KEY"])
 
 st.title("🔍 Scam Job Detector")
 job_text = st.text_area("Paste a job description:", height=200)
