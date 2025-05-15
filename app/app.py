@@ -7,18 +7,17 @@ import os
 from dotenv import load_dotenv
 import numpy as np
 
+
 load_dotenv()
 
 # Access the API key
 api_key = os.getenv("API_KEY")
 
-BASE_DIR = os.path.dirname(__file__)
-DATA_DIR = os.path.join(BASE_DIR, "data")
-
-log_model = joblib.load(os.path.join(DATA_DIR, "logistic_model.pkl"))
-rf_model = joblib.load(os.path.join(DATA_DIR, "random_forest.pkl"))
-dt_model = joblib.load(os.path.join(DATA_DIR, "decision_tree.pkl"))
-vectorizer = joblib.load(os.path.join(DATA_DIR, "tfidf_vectorizer.pkl"))
+# Load your trained models and vectorizer
+log_model = joblib.load("logistic_model.pkl")
+rf_model = joblib.load("random_forest.pkl")
+dt_model = joblib.load("decision_tree.pkl")
+vectorizer = joblib.load("tfidf_vectorizer.pkl")
 
 # Gemini API setup (make sure to install `google-generativeai`)
 genai.configure(api_key=st.secrets["API_KEY"])
