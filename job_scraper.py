@@ -33,7 +33,7 @@ def setup_driver():
     options.add_argument("--disable-gpu")
     options.add_argument("--window-size=1920,1080")
     options.add_argument("--no-sandbox")
-    # Add a user agent to avoid detection
+    # user agent to avoid detection
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36")
     
     try:
@@ -69,7 +69,7 @@ def get_job_links(driver, city, category):
         if not links[i].startswith('http'):
             links[i] = f"https://{city}.craigslist.org{links[i]}"
     
-    # Shuffle the links to get a more diverse sample
+    # to get a more diverse sample
     random.shuffle(links)
     
     return links
@@ -79,7 +79,6 @@ def scrape_job(driver, url, city, category):
         print(f"Scraping job at {url}")
         driver.get(url)
         
-        # Random sleep to avoid detection (between 2-5 seconds)
         time.sleep(random.uniform(2, 5))
         
         soup = BeautifulSoup(driver.page_source, 'html.parser')
@@ -137,7 +136,7 @@ def scrape_job(driver, url, city, category):
             'post_date': post_date,
             'city': city,
             'category': CATEGORIES.get(category, category),
-            'is_scam': ''  # Empty column for you to fill in later (1 for scam, 0 for legitimate)
+            'is_scam': ''  # to fill in  (1 for scam, 0 for legitimate)
         }
     except Exception as e:
         print(f"Error scraping {url}: {e}")
@@ -222,7 +221,6 @@ def main():
         df.to_csv(output_file, index=False)
         print(f"\n✅ Saved {output_file} with {len(all_jobs)} jobs")
         
-        # Basic statistics
         print("\nJobs by city:")
         city_counts = df['city'].value_counts()
         for city, count in city_counts.items():
@@ -233,7 +231,7 @@ def main():
         for category, count in category_counts.items():
             print(f"  {category}: {count} jobs ({count/len(df)*100:.1f}%)")
     else:
-        print("\n❌ No jobs were scraped.")
+        print("\n No jobs were scraped.")
 
 if __name__ == "__main__":
     main()

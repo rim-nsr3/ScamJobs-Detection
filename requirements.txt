@@ -1,9 +1,9 @@
 streamlit
-scikit-learn
 pandas
 numpy
 scipy
-joblib
+scikit-learn==1.2.2
+joblib==1.2.0
 google-generativeai
 python-dotenv
 beautifulsoup4

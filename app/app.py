@@ -7,17 +7,16 @@ import os
 from dotenv import load_dotenv
 import numpy as np
 
-
 load_dotenv()
 
 # Access the API key
 api_key = os.getenv("API_KEY")
 
-""" # Load your trained models and vectorizer
-log_model = joblib.load("logistic_model.pkl")
-rf_model = joblib.load("random_forest.pkl")
-dt_model = joblib.load("decision_tree.pkl")
-vectorizer = joblib.load("tfidf_vectorizer.pkl") """
+# Load your trained models and vectorizer
+log_model = joblib.load("logistic_model.joblib")
+rf_model = joblib.load("random_forest_model.joblib")
+dt_model = joblib.load("decision_tree_model.joblib")
+vectorizer = joblib.load("tfidf_vectorizer.joblib")
 
 # Gemini API setup (make sure to install `google-generativeai`)
 genai.configure(api_key=st.secrets["API_KEY"])
@@ -49,16 +48,16 @@ if st.button("Predict"):
         combined_features = hstack([tfidf_features, numeric_features])
 
         # Make predictions
-        """ preds = {
+        preds = {
             "Logistic Regression": log_model.predict(combined_features)[0],
             "Random Forest": rf_model.predict(combined_features)[0],
             "Decision Tree": dt_model.predict(combined_features)[0]
         }
- """
-        """ # Display predictions
+
+        # Display predictions
         for name, pred in preds.items():
             label = "⚠️ Scam" if pred == 1 else "✅ Legit"
-            st.write(f"**{name}**: {label}") """
+            st.write(f"**{name}**: {label}")
 
         # Ask Gemini to explain
         prompt = f"""This job description was pasted into a real or scam classifier:
