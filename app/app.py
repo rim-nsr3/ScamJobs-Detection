@@ -10,13 +10,13 @@ import numpy as np
 load_dotenv()
 
 # Access the API key
-api_key = os.getenv("API_KEY")
+api_key = st.secrets.get("API_KEY", os.getenv("API_KEY"))
 
 # Load your trained models and vectorizer
-log_model = joblib.load("logistic_model.joblib")
-rf_model = joblib.load("random_forest_model.joblib")
-dt_model = joblib.load("decision_tree_model.joblib")
-vectorizer = joblib.load("tfidf_vectorizer.joblib")
+log_model = joblib.load("app/logistic_model.joblib")
+rf_model = joblib.load("app/random_forest_model.joblib")
+dt_model = joblib.load("app/decision_tree_model.joblib")
+vectorizer = joblib.load("app/tfidf_vectorizer.joblib")
 
 genai.configure(api_key=st.secrets["API_KEY"])
 
