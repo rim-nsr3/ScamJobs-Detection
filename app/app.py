@@ -18,7 +18,6 @@ rf_model = joblib.load("random_forest_model.joblib")
 dt_model = joblib.load("decision_tree_model.joblib")
 vectorizer = joblib.load("tfidf_vectorizer.joblib")
 
-# Gemini API setup (make sure to install `google-generativeai`)
 genai.configure(api_key=st.secrets["API_KEY"])
 
 st.title("🔍 Scam Job Detector")
